@@ -14,11 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const stopBtn = document.getElementById('stopBtn');
 
     const slider = document.getElementById('sensitivity-slider');
-    const sliderValue = document.getElementById('sensitivity-value');
 
     counterElem.textContent = counter;
     slider.value = sliderValueInternal;
-    sliderValue.textContent = sliderValueInternal;
 
     function triggerEcho() {
         const echo = document.createElement("div");
@@ -67,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     slider.addEventListener('input', () => {
         sliderValueInternal = parseInt(slider.value);
         threshold = mapSliderToThreshold(sliderValueInternal);
-        sliderValue.textContent = sliderValueInternal;
     });
 
     resetBtn.addEventListener('click', () => {
