@@ -27,15 +27,14 @@ document.addEventListener("DOMContentLoaded", () => {
         echo.addEventListener("animationend", () => echo.remove());
     }
 
-    // mappa i valori dello slider in soglia effettiva
     function mapSliderToThreshold(val) {
         switch (parseInt(val)) {
-            case -2: return 0.5;  // massima sensibilità
+            case -2: return 0.5;
             case -1: return 0.8;
             case 0: return 1;
-            case 1: return 1.2;   // default
+            case 1: return 1.2;
             case 2: return 1.5;
-            case 3: return 2;     // meno sensibile
+            case 3: return 2;
             default: return 1;
         }
     }
