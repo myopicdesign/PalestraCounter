@@ -153,27 +153,15 @@ footer button {
 }
 
 #slider-container {
+  width: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  color: #fff;
-  font-size: 16px;
 }
 
 #sensitivity-slider {
-  width: 180px;
+  width: 100%;
   accent-color: #00ff88; /* colore della barra */
-}
-
-#slider-container label {
-  margin-right: 10px;
-}
-
-#sensitivity-value {
-  margin-left: 10px;
-  width: 20px;
-  text-align: center;
 }
 
 @keyframes echoAnim {
