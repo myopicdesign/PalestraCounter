@@ -1,0 +1,152 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: radial-gradient(circle at bottom, #004d26, #000) no-repeat center center fixed;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  position: relative;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  background: transparent;
+  z-index: 1000;
+}
+
+header h1 {
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+header i {
+  position: absolute;
+  left: 15px;
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#counter-container {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  border: 4px solid #00ff88;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 20px #00ff88;
+  margin-top: 60px; /* spazio per header fisso */
+}
+
+#counter {
+  font-size: 64px;
+  font-weight: bold;
+  z-index: 2;
+}
+
+#echo-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  overflow: visible;
+  z-index: 1;
+}
+
+.echo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid #00ff88;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.6;
+  animation: echoAnim 1s ease-out forwards;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+#button-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+footer button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+#slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  font-size: 16px;
+}
+
+#sensitivity-slider {
+  width: 180px;
+  accent-color: #00ff88; /* colore della barra */
+}
+
+/* opzionale: piccoli indicatori dei valori */
+#slider-container label {
+  margin-right: 10px;
+}
+
+#sensitivity-value {
+  margin-left: 10px;
+  width: 20px;
+  text-align: center;
+}
+
+@keyframes echoAnim {
+  from { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  to { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
