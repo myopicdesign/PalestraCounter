@@ -6,12 +6,13 @@
   <title>Counter</title>
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 <body>
   <div id="app">
     <header>
-      <i class="fa-solid fa-arrow-left"></i>
+      <i data-lucide="arrow-left"></i>
       <h1>Counter</h1>
     </header>
 
@@ -28,18 +29,23 @@
         <div id="echo-container"></div>
       </div>
 
-      <footer>
-        <div id="button-container">
-          <button id="resetBtn"><i class="fa-solid fa-rotate-left"></i></button>
-          <button id="startBtn"><i class="fa-solid fa-play"></i></button>
-          <button id="stopBtn"><i class="fa-solid fa-pause"></i></button>
-        </div>
+    <footer>
+  <div id="button-container">
+    <button id="resetBtn"><i data-lucide="rotate-ccw"></i></button>
+    <button id="startBtn"><i data-lucide="play"></i></button>
+    <button id="stopBtn"><i data-lucide="pause"></i></button>
+  </div>
 
-        <div id="slider-container">
-          <input type="range" id="sensitivity-slider" min="-2" max="3" step="1">
-        </div>
-      </footer>
+  <div id="slider-container">
+    <input type="range" id="sensitivity-slider" min="-2" max="3" step="1">
+  </div>
+</footer>
+
     </main>
   </div>
+
+  <script>
+    lucide.createIcons(); // inizializza icone sottili
+  </script>
 </body>
 </html>
