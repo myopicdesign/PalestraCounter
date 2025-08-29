@@ -76,6 +76,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (isRunning) return;
         isRunning = true;
 
+        startBtn.classList.add("active");
+        stopBtn.classList.remove("active");
+
         if (typeof DeviceMotionEvent !== 'undefined' &&
             typeof DeviceMotionEvent.requestPermission === 'function') {
             try {
@@ -99,5 +102,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isRunning) return;
         window.removeEventListener('devicemotion', updateCounter);
         isRunning = false;
+
+        stopBtn.classList.add("active");
+        startBtn.classList.remove("active");
     });
 });
+
+const slider = document.getElementById('sensitivity-slider');
+
+function updateSliderFill(slider) {
+    const val = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+    slider.style.background = `linear-gradient(to right, #00ff88 0%, #00ff88 ${val}%, #555 ${val}%, #555 100%)`;
+}
+
+// inizializza fill
+updateSliderFill(slider);
+
+// aggiorna ad ogni input
+slider.addEventListener('input', () => updateSliderFill(slider));
