@@ -31,6 +31,7 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 15px;
   font-size: 18px;
   font-weight: bold;
@@ -40,9 +41,6 @@ header {
 }
 
 header h1 {
-  position: absolute; /* centrato rispetto all'header */
-  left: 50%;
-  transform: translateX(-50%);
   margin: 0;
   font-size: 18px;
 }
@@ -107,7 +105,12 @@ main {
   font-size: 64px;
   font-weight: bold;
   z-index: 2;
+  position: absolute;      /* Fisso al centro del cerchio */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
 
 #echo-container {
   position: absolute;
