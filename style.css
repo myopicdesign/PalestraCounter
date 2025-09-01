@@ -29,30 +29,29 @@ header {
   top: 0;
   left: 0;
   width: 100%;
-  height: 50px; /* altezza fissa per stabilità */
   display: flex;
   align-items: center;
-  justify-content: center; /* centra il titolo */
-  background: transparent;
-  z-index: 1000;
+  padding: 15px;
   font-size: 18px;
   font-weight: bold;
   color: #fff;
+  background: transparent;
+  z-index: 1000;
 }
 
 header h1 {
+  position: fixed; /* fixato al centro fisso */
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   font-size: 18px;
-  pointer-events: none; /* così non "ruba" click */
 }
 
 header i {
   position: absolute;
-  left: 15px; /* distanza fissa dal bordo */
-  font-size: 18px;
+  left: 15px;
   cursor: pointer;
 }
-
 
 main {
   display: flex;
@@ -156,18 +155,17 @@ footer {
   stroke-width: 2; /* lucide light */
 }
 
-
 footer button {
   background: none;
   border: none;
   color: #fff;
-  font-size: 32px; /* default per reset e stop */
+  font-size: 32px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  height: 48px; /* uniforme */
+  height: 48px;
   width: 48px;
 }
 
@@ -175,7 +173,6 @@ footer button {
   width: 56px;
   height: 56px;
 }
-
 
 footer button.active {
   color: #00ff88;
@@ -186,12 +183,12 @@ footer button.active {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 240px; /* largo come il cerchio */
+  width: 240px;
 }
 
 #sensitivity-slider {
   width: 100%;
-  accent-color: #00ff88; /* colore della barra */
+  accent-color: #00ff88;
 }
 
 @keyframes echoAnim {
@@ -199,7 +196,7 @@ footer button.active {
   to { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
 }
 
-/* Chrome, Safari, Edge */
+/* slider styling: Chrome, Safari, Edge */
 #sensitivity-slider {
   -webkit-appearance: none;
   width: 100%;
@@ -217,7 +214,7 @@ footer button.active {
   border-radius: 50%;
   background: #00ff88;
   border: none;
-  margin-top: -4px; /* centratura verticale */
+  margin-top: -4px;
   cursor: pointer;
   box-shadow: none;
 }
