@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     let counter = 0;
-    let sliderValueInternal = 1; // parte sempre da 1
-    let threshold = mapSliderToThreshold(sliderValueInternal);
+    let threshold = 1;
     let lastY = null;
-    let debounceTimeout = 200;
     let lastUpdate = Date.now();
+    let debounceTimeout = 200;
     let isRunning = false;
 
     const counterElem = document.getElementById('counter');
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const slider = document.getElementById('sensitivity-slider');
 
     counterElem.textContent = counter;
-    slider.value = sliderValueInternal;
 
     function triggerEcho() {
         const echo = document.createElement("div");
@@ -44,28 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        let accelerationY = event.accelerationIncludingGravity.y;
-        let deltaY = accelerationY - lastY;
+        let deltaY = event.accelerationIncludingGravity.y - lastY;
         let now = Date.now();
 
-        if (now - lastUpdate > debounceTimeout) {
-            if (Math.abs(deltaY) > threshold) {
-                if (deltaY > 0) {
-                    counter++;
-                    // aggiorniamo solo il testo del counter senza toccare la posizione
-                    counterElem.textContent = counter;
-                    triggerEcho();
-                }
-                lastUpdate = now;
+        if (now - lastUpdate > debounceTimeout && Math.abs(deltaY) > threshold) {
+            if (deltaY > 0) {
+                counter++;
+                counterElem.textContent = counter;
+                triggerEcho();
             }
+            lastUpdate = now;
         }
-        lastY = accelerationY;
+        lastY = event.accelerationIncludingGravity.y;
     }
 
     slider.addEventListener('input', () => {
-        sliderValueInternal = parseInt(slider.value);
-        threshold = mapSliderToThreshold(sliderValueInternal);
-        updateSliderFill(slider);
+        threshold = mapSliderToThreshold(slider.value);
     });
 
     resetBtn.addEventListener('click', () => {
@@ -107,12 +99,4 @@ document.addEventListener("DOMContentLoaded", () => {
         stopBtn.classList.add("active");
         startBtn.classList.remove("active");
     });
-
-    function updateSliderFill(slider) {
-        const val = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-        slider.style.background = `linear-gradient(to right, #00ff88 0%, #00ff88 ${val}%, #555 ${val}%, #555 100%)`;
-    }
-
-    // inizializza fill
-    updateSliderFill(slider);
 });
