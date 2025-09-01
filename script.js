@@ -17,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   counterElem.textContent = counter;
   slider.value = sliderValueInternal;
 
-  // Funzione per creare l'effetto "echo"
   function triggerEcho() {
     const echo = document.createElement("div");
     echo.className = "echo";
@@ -25,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     echo.addEventListener("animationend", () => echo.remove());
   }
 
-  // Mappa valore slider a soglia accelerazione
   function mapSliderToThreshold(val) {
     switch (parseInt(val)) {
       case -2: return 0.5;
@@ -38,19 +36,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Aggiornamento del contatore
   function updateCounter(event) {
     if (!event.accelerationIncludingGravity) return;
-
     if (lastY === null) {
       lastY = event.accelerationIncludingGravity.y;
       return;
     }
-
-    const accelerationY = event.accelerationIncludingGravity.y;
-    const deltaY = accelerationY - lastY;
-    const now = Date.now();
-
+    let accelerationY = event.accelerationIncludingGravity.y;
+    let deltaY = accelerationY - lastY;
+    let now = Date.now();
     if (now - lastUpdate > debounceTimeout) {
       if (Math.abs(deltaY) > threshold) {
         if (deltaY > 0) {
@@ -61,32 +55,25 @@ document.addEventListener("DOMContentLoaded", () => {
         lastUpdate = now;
       }
     }
-
     lastY = accelerationY;
   }
 
-  // Slider: aggiornamento soglia
   slider.addEventListener('input', () => {
     sliderValueInternal = parseInt(slider.value);
     threshold = mapSliderToThreshold(sliderValueInternal);
-    updateSliderFill(slider);
   });
 
-  // Reset counter
   resetBtn.addEventListener('click', () => {
     counter = 0;
     counterElem.textContent = counter;
   });
 
-  // Start contatore
   startBtn.addEventListener('click', async () => {
     if (isRunning) return;
     isRunning = true;
     startBtn.classList.add("active");
     stopBtn.classList.remove("active");
-
-    if (typeof DeviceMotionEvent !== 'undefined' &&
-        typeof DeviceMotionEvent.requestPermission === 'function') {
+    if (typeof DeviceMotionEvent !== 'undefined' && typeof DeviceMotionEvent.requestPermission === 'function') {
       try {
         const res = await DeviceMotionEvent.requestPermission();
         if (res === 'granted') {
@@ -104,7 +91,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Stop contatore
   stopBtn.addEventListener('click', () => {
     if (!isRunning) return;
     window.removeEventListener('devicemotion', updateCounter);
@@ -112,13 +98,14 @@ document.addEventListener("DOMContentLoaded", () => {
     stopBtn.classList.add("active");
     startBtn.classList.remove("active");
   });
-
-  // Funzione per aggiornare il fill dello slider
-  function updateSliderFill(slider) {
-    const val = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-    slider.style.background = `linear-gradient(to right, #00ff88 0%, #00ff88 ${val}%, #555 ${val}%, #555 100%)`;
-  }
-
-  // Inizializza fill slider
-  updateSliderFill(slider);
 });
+
+const slider = document.getElementById('sensitivity-slider');
+function updateSliderFill(slider) {
+  const val = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+  slider.style.background = linear-gradient(to right, #00ff88 0%, #00ff88 ${val}%, #555 ${val}%, #555 100%);
+}
+// inizializza fill
+updateSliderFill(slider);
+// aggiorna ad ogni input
+slider.addEventListener('input', () => updateSliderFill(slider));
