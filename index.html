@@ -15,6 +15,7 @@
       <i data-lucide="arrow-left"></i>
       <h1>Counter</h1>
     </header>
+
     <main>
       <div id="counter-container">
         <!-- cerchio animato attorno -->
@@ -22,22 +23,26 @@
           <div class="loader-ring-light"></div>
           <div class="loader-ring-track"></div>
         </div>
+
         <!-- numero del counter -->
         <div id="counter">0</div>
         <div id="echo-container"></div>
       </div>
+
       <footer>
         <div id="button-container">
           <button id="resetBtn"><i data-lucide="rotate-ccw"></i></button>
           <button id="startBtn"><i data-lucide="play"></i></button>
           <button id="stopBtn"><i data-lucide="pause"></i></button>
         </div>
+
         <div id="slider-container">
           <input type="range" id="sensitivity-slider" min="-2" max="3" step="1">
         </div>
       </footer>
     </main>
   </div>
+
   <script>
     lucide.createIcons(); // inizializza icone sottili
   </script>
