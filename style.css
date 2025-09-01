@@ -40,7 +40,7 @@ header {
 }
 
 header h1 {
-  position: fixed; /* fixato al centro fisso */
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
@@ -155,17 +155,18 @@ footer {
   stroke-width: 2; /* lucide light */
 }
 
+
 footer button {
   background: none;
   border: none;
   color: #fff;
-  font-size: 32px;
+  font-size: 32px; /* default per reset e stop */
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.3s ease;
-  height: 48px;
+  height: 48px; /* uniforme */
   width: 48px;
 }
 
@@ -173,6 +174,7 @@ footer button {
   width: 56px;
   height: 56px;
 }
+
 
 footer button.active {
   color: #00ff88;
@@ -183,12 +185,12 @@ footer button.active {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 240px;
+  width: 240px; /* largo come il cerchio */
 }
 
 #sensitivity-slider {
   width: 100%;
-  accent-color: #00ff88;
+  accent-color: #00ff88; /* colore della barra */
 }
 
 @keyframes echoAnim {
@@ -196,7 +198,7 @@ footer button.active {
   to { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
 }
 
-/* slider styling: Chrome, Safari, Edge */
+/* Chrome, Safari, Edge */
 #sensitivity-slider {
   -webkit-appearance: none;
   width: 100%;
@@ -214,7 +216,7 @@ footer button.active {
   border-radius: 50%;
   background: #00ff88;
   border: none;
-  margin-top: -4px;
+  margin-top: -4px; /* centratura verticale */
   cursor: pointer;
   box-shadow: none;
 }
