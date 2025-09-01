@@ -41,8 +41,8 @@ header {
 
 header h1 {
   position: absolute;
-  left: 49%;
-  transform: translateX(-49%);
+  left: 48%;
+  transform: translateX(-48%);
   margin: 0;
   font-size: 18px;
 }
