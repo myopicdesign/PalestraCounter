@@ -31,7 +31,6 @@ header {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center; /* centrato senza influenze */
   padding: 15px;
   font-size: 18px;
   font-weight: bold;
@@ -41,6 +40,9 @@ header {
 }
 
 header h1 {
+  position: fixed; /* fixato al centro fisso */
+  left: 50%;
+  transform: translateX(-50%);
   margin: 0;
   font-size: 18px;
 }
@@ -55,7 +57,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px; /* spazio per header fisso */
 }
 
 #counter-container {
@@ -63,12 +64,13 @@ main {
   width: 240px;
   height: 240px;
   border-radius: 50%;
+  margin-top: 60px; /* spazio per header fisso */
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* cerchio animato */
+/* cerchio animato attorno */
 .loader-ring {
   position: absolute;
   top: 0;
@@ -105,10 +107,6 @@ main {
   font-size: 64px;
   font-weight: bold;
   z-index: 2;
-  position: absolute; /* fissiamo il counter al centro */
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 }
 
 #echo-container {
@@ -146,7 +144,7 @@ footer {
 #button-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; /* centratura verticale */
   gap: 5px;
 }
 
@@ -154,4 +152,125 @@ footer {
   display: block;
   width: 100%;
   height: 100%;
-  stroke-width: 2;
+  stroke-width: 2; /* lucide light */
+}
+
+footer button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 32px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  height: 48px;
+  width: 48px;
+}
+
+#startBtn svg {
+  width: 56px;
+  height: 56px;
+}
+
+footer button.active {
+  color: #00ff88;
+  text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88;
+}
+
+#slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 240px;
+}
+
+#sensitivity-slider {
+  width: 100%;
+  accent-color: #00ff88;
+}
+
+@keyframes echoAnim {
+  from { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+  to { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+/* slider styling: Chrome, Safari, Edge */
+#sensitivity-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  background: linear-gradient(to right, #00ff88 0%, #00ff88 50%, #555 50%, #555 100%);
+  outline: none;
+}
+
+#sensitivity-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00ff88;
+  border: none;
+  margin-top: -4px;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Firefox */
+#sensitivity-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 4px;
+  background: #555;
+  border: none;
+}
+
+#sensitivity-slider::-moz-range-progress {
+  background: #00ff88;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+}
+
+#sensitivity-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00ff88;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* IE / Edge legacy */
+#sensitivity-slider::-ms-track {
+  width: 100%;
+  height: 8px;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+
+#sensitivity-slider::-ms-fill-lower {
+  background: #00ff88;
+  border-radius: 4px;
+  border: none;
+}
+
+#sensitivity-slider::-ms-fill-upper {
+  background: #555;
+  border-radius: 4px;
+  border: none;
+}
+
+#sensitivity-slider::-ms-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #00ff88;
+  border: none;
+  cursor: pointer;
+  box-shadow: none;
+}
