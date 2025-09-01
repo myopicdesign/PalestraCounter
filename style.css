@@ -40,7 +40,7 @@ header {
 }
 
 header h1 {
-  position: fixed; /* fixato al centro fisso */
+  position: absolute; /* centrato rispetto all'header */
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
