@@ -45,6 +45,8 @@ header h1 {
   transform: translateX(-45%);
   margin: 0;
   font-size: 18px;
+  visibility: hidden;
+
 }
 
 header i {
